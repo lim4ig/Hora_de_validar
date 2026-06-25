@@ -209,10 +209,10 @@
 
   <script>
     document.getElementById('formFilme').addEventListener('submit', function(event) {
-      // Impede o formulário de ser enviado/recarregado antes de validarmos tudo
+      //Não deixa enviar o formulário se houver erros de validação
       event.preventDefault();
 
-      // Capturando os valores dos campos
+      //Valores dos campos do formulário
       const tituloFilme = document.getElementById('tituloFilme').value.trim();
       const tituloOriginal = document.getElementById('tituloOriginal').value.trim();
       const anoProducao = document.getElementById('anoProducao').value;
@@ -230,11 +230,11 @@
       const notaMedia = document.getElementById('notaMedia').value;
       const status = document.getElementById('status').value;
 
-      // Obter o ano atual dinamicamente para a regra do limite superior (+5 anos)
+      //Ano atual e ano máximo permitido para validação do ano de produção
       const anoAtual = new Date().getFullYear();
-      const anoMaximo = anoAtual + 5; // Em 2026, o máximo será 2031
+      const anoMaximo = anoAtual + 5;
 
-      // 1. Validação: Título do Filme
+      // 1.
       if (tituloFilme === "") {
         alert("Erro: O Título do Filme é obrigatório e não pode conter apenas espaços.");
         return;
@@ -244,13 +244,13 @@
         return;
       }
 
-      // 2. Validação: Título Original
+      // 2.
       if (tituloOriginal.length > 200) {
         alert("Erro: O Título Original deve ter no máximo 200 caracteres.");
         return;
       }
 
-      // 3. Validação: Ano de Produção
+      // 3.
       if (anoProducao === "") {
         alert("Erro: O Ano de Produção é obrigatório.");
         return;
@@ -261,13 +261,13 @@
         return;
       }
 
-      // 4. Validação: Data de Lançamento
+      // 4.
       if (dataLancamento === "") {
         alert("Erro: A Data de Lançamento é obrigatória.");
         return;
       }
 
-      // 5. Validação: Duração (Minutos)
+      // 5.
       if (duracaoMinutos === "") {
         alert("Erro: A Duração é obrigatória.");
         return;
@@ -278,31 +278,31 @@
         return;
       }
 
-      // 6. Validação: Gênero Principal
+      // 6.
       if (generoPrincipal === "") {
         alert("Erro: Selecione um Gênero Principal válido.");
         return;
       }
 
-      // 7. Validação: Classificação Indicativa
+      // 7.
       if (classificacao === "") {
         alert("Erro: Selecione uma Classificação Indicativa.");
         return;
       }
 
-      // 8. Validação: País de Origem
+      // 8.
       if (paisOrigem === "") {
         alert("Erro: Selecione um País de Origem.");
         return;
       }
 
-      // 9. Validação: Idioma Original
+      // 9.
       if (idiomaOriginal === "") {
         alert("Erro: Selecione o Idioma Original.");
         return;
       }
 
-      // 10. Validação: Diretor
+      // 10.
       if (diretor === "") {
         alert("Erro: O campo Diretor é obrigatório.");
         return;
@@ -316,7 +316,7 @@
         return;
       }
 
-      // 11. Validação: Produtora
+      // 11.
       if (produtora === "") {
         alert("Erro: O campo Produtora é obrigatório.");
         return;
@@ -326,25 +326,25 @@
         return;
       }
 
-      // 12. Validação: Distribuidora
+      // 12.
       if (distribuidora.length > 200) {
         alert("Erro: O nome da Distribuidora deve ter no máximo 200 caracteres.");
         return;
       }
 
-      // 13. Validação: Orçamento
+      // 13.
       if (orcamento !== "" && parseFloat(orcamento) < 0) {
         alert("Erro: O Orçamento não pode ser um valor negativo.");
         return;
       }
 
-      // 14. Validação: Receita de Bilheteria
+      // 14.
       if (receitaBilheteria !== "" && parseFloat(receitaBilheteria) < 0) {
         alert("Erro: A Receita de Bilheteria não pode ser um valor negativo.");
         return;
       }
 
-      // 15. Validação: Nota Média
+      // 15.
       if (notaMedia !== "") {
         const notaNum = parseFloat(notaMedia);
         if (notaNum < 0.0 || notaNum > 10.0) {
@@ -353,15 +353,13 @@
         }
       }
 
-      // 16. Validação: Status
+      // 16.
       if (status === "") {
         alert("Erro: Selecione o Status atual do filme.");
         return;
       }
 
-      // Se passou por todas as regras sem entrar em nenhum 'return'
       alert("Sucesso! Todos os dados estão válidos e prontos para serem salvos.");
-      // Aqui o código estaria livre para enviar os dados para um banco de dados.
     });
   </script>
 </body>
